@@ -2,7 +2,7 @@ from paralleldots import set_api_key, get_api_key, emotion
 
 def get_emotion(line):
 
-    set_api_key("VsjsIMn9VEkVhEoUrwa7EnNF6o6w0xvOeLwsoVeuyhk")
+    set_api_key("use api key from parallel dots")
     #get_api_key()
     # line=str('mytextbox')
     result=emotion(line)
