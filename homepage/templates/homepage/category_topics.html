@@ -1,0 +1,43 @@
+{% extends 'homepage/base.html' %}
+
+{% block title %}
+  {{ category.name }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+
+    <a href="{% url 'new_topic' category.pk %}" class="btn btn-primary">New topic</a>
+
+
+    <div class="col-sm-2">
+
+    {% for topic in category.topics.all %}
+
+            <div class="container-fluid">
+
+                <p class="align-middle">{{ topic.subject }}</p>
+                <br>
+                <p class="align-middle">{{ topic.creator.username }}</p>
+
+
+            <a href="#"><img class="timg" src="img/images/unnamed.png"></a>
+
+            </div>
+
+          {% endfor %}
+
+        </div>
+
+
+{% endblock %}
+
+{#{% for topic in board.topics.all %}#}
+{#        <tr>#}
+{#          <td>{{ topic.subject }}</td>#}
+{#          <td>{{ topic.starter.username }}</td>#}
+{#          <td>0</td>#}
+{#          <td>0</td>#}
+{#          <td>{{ topic.last_updated }}</td>#}
+{#        </tr>#}
+{#      {% endfor %}#}

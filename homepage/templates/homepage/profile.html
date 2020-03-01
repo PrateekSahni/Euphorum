@@ -1,0 +1,50 @@
+{% extends 'homepage/base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+
+        <div class="jumbotron" style="background-color: rgba(0,0,0,0.5)">
+  <h1>Profile</h1>  
+</div>
+    <div class="row" >
+        <div class="col-sm-2">
+        
+        </div>
+        <div class="col-sm-8 rounded" id="p1" style="border-style: dashed;border-color: aquamarine">
+            <div class="row">
+               
+            <div class="col-sm-4" style="background-color: azure;">
+                
+               <div class="container">
+  <h2>User</h2>
+
+  <div class="card" style="width:100%; background-color: aliceblue;">
+    <img class="card-img-top" src="img/images/guts_berserk__fanart____psd_file_by_slyvanie-dbta7ji.png" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Dante</h4>
+      <p class="card-text">______@gmail.com</p>
+      <a href="#" class="btn btn-primary">Edit</a>
+    </div>
+  </div>
+                    </div>
+                </div>
+            <div class="col-sm-8" style="background-color: blanchedalmond">
+                <h2>Something more.....</h2>
+                <br>
+                <br>
+                <h3>About me</h3>
+                <form action="">
+
+                    HERE: <input type="text" disabled="disabled" value="text here">
+                    <button class="btn btn-primary">edit</button>
+                </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+        </div>
+        
+        </div>
+
+    {% endblock %}

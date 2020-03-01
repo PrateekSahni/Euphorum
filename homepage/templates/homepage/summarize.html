@@ -1,0 +1,20 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+
+ <h4>Text summarisation</h4>
+
+
+    <form action="{% url 'homepage:display_summary' %}" method="get">
+
+  <label for="comment">Type here:</label>
+  <textarea name="text" rows="10" cols="100"></textarea>
+            <button type="submit" class="btn btn-primary" name="summarize_button">Summarise</button>
+
+</form>
+
+{% for sentence in summary %}
+    {{ sentence }}
+    {% endfor %}
+
+{% endblock %}

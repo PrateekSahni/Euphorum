@@ -1,0 +1,31 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+
+
+{#<div class="form-group">#}
+{#  <label for="comment">Type here:</label>#}
+{#  <textarea class="form-control" rows="5" id="comment"></textarea>#}
+{#</div>#}
+{#           <button type="submit" class="btn btn-primary"  title="Emotions" data-toggle="popover" data-trigger="focus" data-content="your dominant emotion is" data-img="blog-Emojis13.jpg">Detect</button>#}
+{##}
+{#        </div>#}
+{##}
+{#    {{ result.emotion }}#}
+
+
+<form action="{% url 'homepage:detect_emotion' %}" method="get">
+
+  <label for="comment">Type here:</label>
+  <textarea name="mytext" rows="5" cols="50"></textarea>
+
+{# <input type="text" name="mytextbox" size="20"/>#}
+    <br><br>
+ <input type="submit" class="btn" value="Get emotion" name="mybtn">
+</form>
+
+
+{{ result }}
+
+
+{% endblock %}

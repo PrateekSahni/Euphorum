@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>{% block title %}Euphorum{% endblock %}</title>
+
+    {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'SymbolFinal.png' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Kavoon" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel=stylesheet href={% static 'homepage/css/bootstrap4.css'%}>
+   	<link rel="stylesheet" type="text/css" href={% static 'homepage/css/animate.css'%}>
+    <link href="https://fonts.googleapis.com/css?family=Kavoon" rel="stylesheet">
+    <link rel="stylesheet" href={% static 'homepage/css/mystyle.css'%}>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src={% static 'homepage/js/wow.min.js'%}></script>
+    <script>
+    new WOW().init();
+    </script>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Indie+Flower|Kavoon');
+
+        @import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+        h2
+        {
+            font-family: 'Indie Flower', cursive;
+        }
+
+        p,h1
+        {
+            font-family: 'Pacifico', cursive;
+        }
+    </style>
+</head>
+
+<body class="body1">
+
+{% block body %}
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="{% url 'homepage:index' %}">
+    <img src="{% static 'LogoFinal.png'%}" alt="logo" style="width:150px; height: 80px">
+  </a>
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Topics</a>
+    </li>
+ <!--     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Specialities <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Check mood</a></li>
+          <li><a href="#">Summarize Text</a></li>
+
+          -->
+
+            <li class="nav-item">
+      <a class="nav-link" href="{% url 'homepage:emotion' %}">Check mood</a>
+    </li>
+      <li class="nav-item">
+      <a class="nav-link" href="{% url 'homepage:summarize' %}">Summarize text</a>
+    </li>
+
+        </ul>
+
+    <li class="nav-item">
+      <a class="nav-link" href="#">About us</a>
+    </li>
+
+      <li></li>
+  </ul>
+
+    <form class="form-inline" role="search" method="get" action="{% url 'homepage:index' %}">
+    <input class="form-control" type="text" placeholder="Search" name="q" value="{{ request.GET.q }}">>
+    <button class="btn btn-success" type="submit">Search</button>
+  </form>
+
+   <div class="collapse navbar-collapse" id="mainMenu">
+      {% if user.is_authenticated %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ user.username }}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+              <a class="dropdown-item" href="#">My account</a>
+              <a class="dropdown-item" href="#">Change password</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'homepage:logout' %}">Log out</a>
+            </div>
+          </li>
+        </ul>
+      {% else %}
+        <form class="form-inline ml-auto">
+          <a href="{% url 'homepage:login' %}" class="btn btn-outline-secondary">Log in</a>
+          <a href="{% url 'homepage:register' %}" class="btn btn-primary ml-2">Register</a>
+        </form>
+      {% endif %}
+    </div>
+
+
+
+{#<ul class="nav navbar-nav navbar-right">#}
+{#    <li><a href="{% url 'homepage:create_topic' %}">New Topic</a></li>#}
+{#      <li><a href="{% url 'homepage:profile' %}"><span class="glyphicon-glyphicon-user"></span> Profile</a></li>#}
+{#      <li><a href="{% url 'homepage:logout_user' %}"><span class="glyphicon-glyphicon-log-in"></span> Logout</a></li>#}
+{#    </ul>#}
+    </nav>
+
+        <br><br><br><br><br><br><br><br>
+
+
+{% block content %}
+{% endblock %}
+
+{% endblock body %}
+
+<script src="{% static 'homepage/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'homepage/js/popper.min.js' %}"></script>
+    <script src="{% static 'homepage/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'homepage/base.html' %}
+
+{% block title %}
+  {{ category.name }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <a href="{% url 'homepage:new_topic' category.pk %}" class="btn btn-primary">New topic</a>
+
+
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Topic</th>
+        <th>Starter</th>
+        <th>Posts</th>
+        <th>Views</th>
+        <th>Last Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for topic in category.topics.all %}
+        <tr>
+            <td><a href="{% url 'homepage:topic_posts' category.pk topic.pk %}">{{ topic.subject }}</a></td>
+          <td>{{ topic.creator.username }}</td>
+          <td>{{ topic.posts }}</td>
+          <td>{{ topic.views }}</td>
+          <td>{{ topic.last_updated }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
